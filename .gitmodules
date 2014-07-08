@@ -1,3 +1,6 @@
 [submodule "work"]
 	path = work
 	url = git@github.com:volkovasystems/work.git
+[submodule "class-path"]
+	path = class-path
+	url = git@github.com:volkovasystems/class-path.git

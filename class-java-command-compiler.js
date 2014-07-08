@@ -20,7 +20,8 @@
 		{
 			"work.js": "work",
 			"fs": "fs",
-			"path": "path"
+			"path": "path",
+			"class-path.js": "Path"
 		}
 	@end-include
 */
@@ -56,12 +57,20 @@ JavaCommandCompiler.prototype.checkIfCompiled = function checkIfCompiled( direct
 			}
 		@end-meta-configuration
 	*/
-	var compiledClassFilePath = [ directory, "/", classNamespace, "/", classNamespace + ".class" ].join( path.sep ).replaceAll( "/", path.sep );
+	
+	var compiledClassFilePath = ( new Path( directory ) )
+		.appendToRawPath( classNamespace )
+		.appendToRawPath( classNamespace )
+		.toString( );
+
 	return fs.existsSync( compiledClassFilePath );
 };
 
 var work = require( "./work/work.js" );
+var Path = require( "./class-path/class-path.js" );
+
 var fs = require( "fs" );
 var path = require( "path" );
+
 
 ( module || { } ).exports = JavaCommandCompiler;
